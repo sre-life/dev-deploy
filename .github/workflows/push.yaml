@@ -14,6 +14,7 @@ jobs:
          #repository: ${{ github.repository }}
          tag_with_ref: true
          tag_with_sha: true
+         push: true
          tags: francistv/dev-deploy
        
           
