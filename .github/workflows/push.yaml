@@ -22,5 +22,19 @@ jobs:
          tag_with_sha: true
          push: true
          tags: francistv/dev-deploy:${{ github.sha }}
+     - name: Deploy to Cluster
+       uses: steebchen/kubectl@master
+       env: 
+         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+       with:
+         args: set image --record deployment/my-app nginx=${{ github.repository }}:${{ github.sha }}
+
+     - name: verify deployment
+       uses: steebchen/kubectl@master
+       env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        version: v1.28.12 # specify kubectl binary version explicitly
+       with:
+         args: '"rollout status deployment/my-app"'
        
           
