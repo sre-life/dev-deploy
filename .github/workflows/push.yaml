@@ -34,8 +34,8 @@ jobs:
        uses: steebchen/kubectl@master
        env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        version: v1.32.3 # specify kubectl binary version explicitly
+        version: "1.15" # specify kubectl binary version explicitly
        with:
-         args: '"rollout status deployment/my-app"'
+         args: '"kubectl rollout status deployment/my-app"'
        
           
