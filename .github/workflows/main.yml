@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: [label-1]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
