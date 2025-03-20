@@ -1,4 +1,4 @@
-name: Sample Python
+name: Sample Python 2
 
 on: [push]
 
