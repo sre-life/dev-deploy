@@ -16,3 +16,6 @@ jobs:
     - name: Test python script
       run: |
         python3 /home/docker/script.py
+    - name: Creating New txt File
+      run: |
+         echo "Creating New File since Github Actions" > newfile.txt
