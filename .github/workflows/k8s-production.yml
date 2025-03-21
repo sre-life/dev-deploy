@@ -1,0 +1,22 @@
+
+name: Sample k8s Production
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: [self-hosted-production]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        sudo yum install -y python3-pip 
+        python3 -m pip install --upgrade pip --break-system-packages
+        python3 -m pip install flask --break-system-packages
+        pip3 
+    - name: Test python script
+      run: |
+        python3 --version
+    - name: Creating New txt File
+      run: |
+         echo "Creating New File since Github Actions" > /home/github/newfile.txt
