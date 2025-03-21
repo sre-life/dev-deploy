@@ -11,9 +11,9 @@ jobs:
     - name: Install dependencies
       run: |
         sudo yum install -y python3-pip 
-        python3 -m pip install --upgrade pip 
-        python3 -m pip install flask 
-        pip3 
+        sudo python3 -m pip install --upgrade pip 
+        sudo python3 -m pip install flask 
+       
     - name: Test python script
       run: |
         python3 --version
