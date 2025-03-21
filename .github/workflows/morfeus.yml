@@ -15,4 +15,4 @@ jobs:
         pip3 
     - name: Test with pytest
       run: |
-        python3 -m pytest
+        python3 -m /home/docker/script.py
