@@ -13,6 +13,6 @@ jobs:
         python3 -m pip install --upgrade pip --break-system-packages
         python3 -m pip install flask --break-system-packages
         pip3 
-    - name: Test with pytest
+    - name: Test python script
       run: |
-        python3 -m /home/docker/script.py
+        python3 /home/docker/script.py
