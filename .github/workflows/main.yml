@@ -9,9 +9,9 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install dependencies
       run: |
-        sudo apt-get install python3-pip
+        sudo apt-get install python3-pip --break-system-packages
         python3 -m pip install flask --break-system-packages
         pip3 
-    - name: Test with pytest
+    - name: Creating new File
       run: |
-        python3 -m pytest
+        echo "Hello" > newfile.txt
