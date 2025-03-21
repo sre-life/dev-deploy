@@ -18,4 +18,4 @@ jobs:
         python3 /home/docker/script.py
     - name: Creating New txt File
       run: |
-         echo "Creating New File since Github Actions" > newfile.txt
+         echo "Creating New File since Github Actions" > /home/docker/newfile.txt
