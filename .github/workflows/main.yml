@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: [label-1]
+    runs-on: [self-hosted]
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
