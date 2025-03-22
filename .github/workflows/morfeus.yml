@@ -24,6 +24,7 @@ jobs:
          
 
   deploy:
+    name: Deploy to Dev
     runs-on: [self-hosted]
     needs: build
     steps:
@@ -34,14 +35,6 @@ jobs:
         echo "Deploying to Dev..."
         docker run -d --name dev-gninx francistv/dev-deploy:latest
         
-    - name: Build and push
-      uses: docker/build-push-action@v6
-      with:
-        platforms: linux/amd64,linux/arm64
-        push: true
-        tags: |
-          rancistv/dev-deploy:latest
-
     - name: Exporting Docker Image OCI
       run: |
         sudo mkdir -p /opt/docker-image/docker-image-$(date +'%Y%m%H$S')
