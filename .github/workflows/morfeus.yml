@@ -1,8 +1,7 @@
-name: Step 1
 on: push
 name: deploy
 jobs:
-  deploy:
+  build:
      name: Creanting New Docker Image
      runs-on: ubuntu-latest
      steps:
@@ -22,14 +21,11 @@ jobs:
          #tag_with_sha: true
          push: true
          tags: francistv/dev-deploy
+         
 
-name: Step 2
-
-on: [push]
-
-jobs:  
-  build:
+  deploy:
     runs-on: [self-hosted]
+    needs: build
     steps:
     - uses: actions/checkout@v4
     - name: Test python script
