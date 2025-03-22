@@ -20,7 +20,7 @@ jobs:
          #tag_with_sha: true
          push: true
          tags: francistv/dev-deploy
-jobs:
+
   build:
     runs-on: [self-hosted]
     steps:
