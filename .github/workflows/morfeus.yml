@@ -32,8 +32,9 @@ jobs:
     - name: Deploy to Dev
       #if: steps.wait-for-push-docker-image.outputs.conclusion == 'success'
       run: |
-        echo "Deploying to Dev..."
-        docker stop francistv/dev-deploy:latest || true && docker rm francistv/dev-deploy:latest || true
+        echo "Deleteing Docker imagen -> dev-nginx if exists"
+        docker stop dev-gninx  || true && docker rm dev-gninx  || true
+        echo "Deploying dev-nginx application to Dev..."
         docker run -d --name dev-gninx  -p 8081:80 francistv/dev-deploy:latest
         
 
