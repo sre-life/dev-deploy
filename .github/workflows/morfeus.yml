@@ -21,7 +21,7 @@ jobs:
          push: true
          tags: francistv/dev-deploy
 
-  use:
+  build:
     runs-on: [self-hosted]
     steps:
       - name: Running New Docker Image on Morfeus
