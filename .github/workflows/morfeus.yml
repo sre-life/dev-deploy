@@ -28,11 +28,22 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v4
-    - name: Test python script
+    - name: Deploy to Dev
       if: steps.wait-for-push-docker-image.outputs.conclusion == 'success'
       run: |
-        python3 /home/docker/script.py
-    - name: Creating New txt File
+        echo "Deploying to Dev..."
+        docker run -d --name dev-gninx francistv/dev-deploy:latest
+        
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+          rancistv/dev-deploy:latest
+
+    - name: Exporting Docker Image OCI
       run: |
-         echo "Creating New File since Github Actions" > /home/docker/newfile.txt
+        sudo mkdir -p /opt/docker-image/docker-image-$(date +'%Y%m%H$S')
+        docker save -o /opt/docker-image/docker-image-$(date +'%Y%m%H$S')/dev-nginx.tar francistv/dev-deploy:latest
 
