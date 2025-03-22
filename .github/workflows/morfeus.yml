@@ -21,16 +21,4 @@ jobs:
          push: true
          tags: francistv/dev-deploy
      
-     - name: Sample Morfeus
-
-       on: [push]
-
-       jobs:
-         build:
-           runs-on: [self-hosted]
-           steps:
-           - uses: actions/checkout@v4
-           - name: Install dependencies
-             run: |
-               docker run -d francistv/dev-deploy
            
