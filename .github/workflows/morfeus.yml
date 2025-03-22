@@ -2,7 +2,7 @@ on: push
 name: deploy
 jobs:
   deploy:
-     name: deploy to cluster
+     name: Creanting New Docker Image
      runs-on: ubuntu-latest
      steps:
 
@@ -12,7 +12,7 @@ jobs:
          username: ${{ secrets.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_PASSWORD }}
 
-     - name: Build and Push
+     - name: Build and Push to Docke Hub
        uses: docker/build-push-action@v5
        with:
          #repository: ${{ repository }}
@@ -21,20 +21,10 @@ jobs:
          push: true
          tags: francistv/dev-deploy
 
-  build:
+  use:
     runs-on: [self-hosted]
     steps:
-    - uses: actions/checkout@v4
-    - name: Install dependencies
-      run: |
-        sudo apt-get install -y python3-pip
-        python3 -m pip install --upgrade pip --break-system-packages
-        python3 -m pip install flask --break-system-packages
-        pip3
-    - name: Test python script
-      run: |
-        python3 /home/docker/script.py
-    - name: Creating New txt File
-      run: |
-         echo "Creating New File since Github Actions" > /home/docker/newfile2.txt     
-           
+      - name: Running New Docker Image on Morfeus
+        run: |
+          docker francistv/dev-deploy:latest
+          docker image ls -a
