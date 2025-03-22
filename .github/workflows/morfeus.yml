@@ -30,13 +30,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Deploy to Dev
-      if: steps.wait-for-push-docker-image.outputs.conclusion == 'success'
+      #if: steps.wait-for-push-docker-image.outputs.conclusion == 'success'
       run: |
         echo "Deploying to Dev..."
-        docker run -d --name dev-gninx francistv/dev-deploy:latest
+        docker run -d --name dev-gninx  -p 8081:80 francistv/dev-deploy:latest
         
-    - name: Exporting Docker Image OCI
-      run: |
-        sudo mkdir -p /opt/docker-image/docker-image-$(date +'%Y%m%H$S')
-        docker save -o /opt/docker-image/docker-image-$(date +'%Y%m%H$S')/dev-nginx.tar francistv/dev-deploy:latest
+
 
