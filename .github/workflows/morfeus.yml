@@ -20,11 +20,21 @@ jobs:
          #tag_with_sha: true
          push: true
          tags: francistv/dev-deploy
-
+  
   build:
     runs-on: [self-hosted]
     steps:
-      - name: Running New Docker Image on Morfeus
-        run: |
-          docker francistv/dev-deploy:latest
-          docker image ls -a
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        sudo apt-get install -y python3-pip
+        python3 -m pip install --upgrade pip --break-system-packages
+        python3 -m pip install flask --break-system-packages
+        pip3
+    - name: Test python script
+      run: |
+        python3 /home/docker/script.py
+    - name: Creating New txt File
+      run: |
+         echo "Creating New File since Github Actions" > /home/docker/newfile.txt
+
