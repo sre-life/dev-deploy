@@ -33,6 +33,7 @@ jobs:
       #if: steps.wait-for-push-docker-image.outputs.conclusion == 'success'
       run: |
         echo "Deploying to Dev..."
+        docker stop francistv/dev-deploy:latest || true && docker rm francistv/dev-deploy:latest || true
         docker run -d --name dev-gninx  -p 8081:80 francistv/dev-deploy:latest
         
 
