@@ -34,7 +34,7 @@ jobs:
       run: |
         echo "Deleteing Docker imagen -> dev-nginx if exists"
         docker stop dev-nginx  || true && docker rm dev-nginx  || true
-        docker rmi francistv/dev-deploy:latest
+        docker rmi francistv/dev-deploy:latest -f
         echo "Deploying dev-nginx application to Dev..."
         docker run -d --name dev-nginx  -p 8081:80 francistv/dev-deploy:latest
     - name: Exporting Docker Image Backups OCI
