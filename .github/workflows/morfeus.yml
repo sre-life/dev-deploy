@@ -40,6 +40,7 @@ jobs:
     - name: Exporting Docker Image Backups OCI
       run: |
          echo " Exporting Docker Image Backups OCI"
+          mkdir -p /home/docker/backups-image-docker/$(date +"%Y%m%H%M")
          docker save -o /home/docker/backups-image-docker/$(date +"%Y%m%H%M")/dev-nginx-$(date +"%Y%m%H%M").tar dev-nginx
         
 
