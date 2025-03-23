@@ -33,10 +33,13 @@ jobs:
       #if: steps.wait-for-push-docker-image.outputs.conclusion == 'success'
       run: |
         echo "Deleteing Docker imagen -> dev-nginx if exists"
-        docker stop dev-gninx  || true && docker rm dev-gninx  || true
+        docker stop dev-nginx  || true && docker rm dev-nginx  || true
         docker rmi francistv/dev-deploy:latest
         echo "Deploying dev-nginx application to Dev..."
-        docker run -d --name dev-gninx  -p 8081:80 francistv/dev-deploy:latest
+        docker run -d --name dev-nginx  -p 8081:80 francistv/dev-deploy:latest
+    - name: Exporting Docker Image Backups OCI
+      run: |
+        docker buildx build --output type=oci,dest=mkdir -p /opt/docker-image/$(date +"%Y%m%H%M")/dev-nginx-$(date +"%Y%m%H%M").tar
         
 
 
