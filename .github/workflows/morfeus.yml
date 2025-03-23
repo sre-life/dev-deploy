@@ -40,8 +40,8 @@ jobs:
     - name: Exporting Docker Image Backups OCI
       run: |
          echo "Creating Directory Backup for Docker Image"
-         sudo mkdir -p /opt/docker-image/$(date +"%Y%m%H%M")
-         docker buildx build --output type=oci,dest=mkdir -p /opt/docker-image/$(date +"%Y%m%H%M")/dev-nginx-$(date +"%Y%m%H%M").tar
+         sudo mkdir -p /home/docker/backups-image-docker/$(date +"%Y%m%H%M")
+         docker buildx build --output type=oci,dest=/home/docker/backups-image-docker/$(date +"%Y%m%H%M")/dev-nginx-$(date +"%Y%m%H%M").tar
         
 
 
