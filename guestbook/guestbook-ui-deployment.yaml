@@ -14,7 +14,7 @@ spec:
         app: guestbook-ui
     spec:
       containers:
-      - image: quintilesims/guestbook
+      - image: quintilesims/guestbook:1.0
         name: guestbook-ui
         ports:
         - containerPort: 80
